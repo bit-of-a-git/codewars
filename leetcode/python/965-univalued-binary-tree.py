@@ -22,3 +22,15 @@ class Solution:
         dsf(root)
 
         return len(set(vals)) == 1
+
+    def isUnivalTreeSecond(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True
+        if root.left and root.val != root.left.val:
+            return False
+        if root.right and root.val != root.right.val:
+            return False
+
+        return self.isUnivalTreeSecond(root.left) and self.isUnivalTreeSecond(
+            root.right
+        )
